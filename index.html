@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gürültü Haritası</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🔊 Gürültü Haritası</h1>
+    <p>Ses kaynaklarını alanın planına koy. Her noktada sesin ne kadar yüksek olduğunu, en sessiz yeri ve seni en çok kimin rahatsız ettiğini göreyim.</p>
+  </header>
+
+  <main>
+    <section class="sol">
+      <div class="kart plan-kart">
+        <div class="baslik-satir">
+          <h2 id="alanBaslik">Plan</h2>
+          <span class="not">Kaynakları ve 🎧 dinleyiciyi sürükleyebilirim.</span>
+        </div>
+        <div class="tuval-kap"><canvas id="plan" width="1000" height="600" aria-label="Alanın gürültü haritası"></canvas></div>
+        <div class="olcek" id="olcek"></div>
+        <p class="not" id="planNot"></p>
+      </div>
+    </section>
+
+    <section class="sag">
+      <div class="kart dinleyici">
+        <h2>🎧 Dinleyicinin yerinde</h2>
+        <div id="dinle"></div>
+      </div>
+
+      <div class="kart">
+        <h2>Ses kaynakları</h2>
+        <ol id="kaynaklar" class="kaynaklar"></ol>
+        <div class="ekle">
+          <select id="yeniTur" aria-label="Eklenecek kaynak"></select>
+          <button type="button" id="ekle">+ Ekle</button>
+        </div>
+        <p class="not">dB değerleri 1 metredeki yaklaşık seviye. Bilmiyorsam hazır değer yeter.</p>
+      </div>
+
+      <div class="kart">
+        <h2>Alan</h2>
+        <div class="izgara">
+          <label>Eni (m) <input id="en" type="number" min="2" max="500" step="1"></label>
+          <label>Boyu (m) <input id="boy" type="number" min="2" max="500" step="1"></label>
+          <label>Arka plan (dB) <input id="arkaPlan" type="number" min="0" max="90" step="1"></label>
+          <label>Hedefim (dB) <input id="hedef" type="number" min="20" max="100" step="1"></label>
+        </div>
+      </div>
+
+      <div class="kart islemler">
+        <button type="button" id="ornek" class="ikinci">Örnek koy</button>
+        <button type="button" id="yedekAl" class="ikinci">Yedek al</button>
+        <label class="ikinci dugme">Yedek yükle<input id="yedekYukle" type="file" accept="application/json,.json"></label>
+        <p class="not" id="islemYazi">Her şey sadece bu tarayıcıda duruyor. Mikrofon kullanmıyorum; seviyeler bir hesap, ölçüm değil.</p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
